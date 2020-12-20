@@ -2,7 +2,7 @@ import random
 from tkinter import *
 
 
-#кнопка Начать игру
+# кнопка Начать игру
 def clicked():
     lbl.configure(text="Добро пожаловать в числовую угадайку!\n\nЯ уже загадала число от 1 до 100.\n\n"
                        "Попробуй угадать число.", padx="50", pady="8")
@@ -11,7 +11,7 @@ def clicked():
     btn_guess.grid(column=0, row=4, padx="20", pady="8.5")
 
 
-#кнопка Угадать
+# кнопка Угадать
 def guessed():
     value = variant.get()
     if value:
@@ -52,7 +52,8 @@ btn_start = Button(window, text="Начать игру", bg="LightBlue1", fg="gr
 btn_start.grid(column=0, row=1)
 btn_guess = Button(window, text="Угадать", bg="LightBlue1", fg="grey26", command=guessed)
 variant = Entry(window)
-#здесь генерируется случайное число
+# здесь генерируется случайное число
 n = random.randint(1, 100)
-print('Рандом-', n) #в консоль выведется загаданное число
+# в консоль выведется загаданное число
+print('Рандом-', n)
 window.mainloop()
