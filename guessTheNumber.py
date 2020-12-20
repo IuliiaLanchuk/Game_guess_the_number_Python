@@ -43,14 +43,14 @@ def is_valid(num):
 
 window = Tk()
 window.title("Приложение Угадайка")
-window.config(bg='bisque2')
+window.config(bg='LightSteelBlue3')
 window.geometry('350x250')
 lbl = Label(window, text="Привет,меня зовут Юля!\nСыграешь со мной в угадайку? Тогда жми на кнопку!",
-            font=("Arial Bold", 10), bg='bisque2', padx="10", pady="18")
+            font=("Arial", 10), bg='LightSteelBlue3', padx="10", pady="18")
 lbl.grid(column=0, row=0)
-btn_start = Button(window, text="Начать игру", bg="LightBlue1", fg="grey26", command=clicked)
+btn_start = Button(window, text="Начать игру", bg="gray", fg="grey26", command=clicked)
 btn_start.grid(column=0, row=1)
-btn_guess = Button(window, text="Угадать", bg="LightBlue1", fg="grey26", command=guessed)
+btn_guess = Button(window, text="Угадать", bg="gray", fg="grey26", command=guessed)
 variant = Entry(window)
 # здесь генерируется случайное число
 n = random.randint(1, 100)
