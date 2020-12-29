@@ -2,6 +2,14 @@ import random
 from tkinter import *
 
 
+# проверка, что введенное это цифры от 1 до 100
+def is_valid(num):
+    if num.isdecimal() and 1 <= int(num) <= 100:
+        return True
+    else:
+        return False
+
+
 # кнопка Начать игру
 def clicked():
     lbl.configure(text="Добро пожаловать в числовую угадайку!\n\nЯ уже загадала число от 1 до 100.\n\n"
@@ -14,38 +22,27 @@ def clicked():
 # кнопка Угадать
 def guessed():
     value = variant.get()
-    if value:
-        print(value)
-    else:
-        print('Empty Entry')
-    print('кнопка угадать нажата')  # это выведется в консоли
     if is_valid(value):
         if int(value) < n:
             lbl.configure(text="Ваше число меньше загаданного,\n попробуйте еще разок", padx="60", pady="18")
+            variant.delete(0, len(value))
         elif int(value) > n:
             lbl.configure(text="Ваше число больше загаданного,\n попробуйте еще разок", padx="60", pady="18")
+            variant.delete(0, len(value))
         elif int(value) == n:
             variant.destroy()
             btn_guess.destroy()
             lbl.configure(text='Вы угадали! Поздравляем!\n\nСпасибо, что играли в числовую угадайку.\nЕще увидимся...')
     else:
         lbl.configure(text='А может быть все-таки введем\n целое число от 1 до 100?', padx="80", pady="8")
-        print('А может быть все-таки введем целое число от 1 до 100?')
-
-
-# проверка, что введенное это цифры
-def is_valid(num):
-    if num.isdecimal() and 1 <= int(num) <= 100:
-        return True
-    else:
-        return False
+        variant.delete(0, len(value))
 
 
 window = Tk()
 window.title("Приложение Угадайка")
 window.config(bg='LightSteelBlue3')
 window.geometry('350x250')
-lbl = Label(window, text="Привет,меня зовут Юля!\nСыграешь со мной в угадайку? Тогда жми на кнопку!",
+lbl = Label(window, text="Привет!\nСыграешь со мной в угадайку? Тогда жми на кнопку!",
             font=("Arial", 10), bg='LightSteelBlue3', padx="10", pady="18")
 lbl.grid(column=0, row=0)
 btn_start = Button(window, text="Начать игру", bg="gray", fg="grey26", command=clicked)
